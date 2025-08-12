@@ -1,0 +1,83 @@
+{
+    "data": [
+        {
+            "index": 0,
+            "timestamp": "2025-08-07 19:12:16",
+            "classificacao": [
+                "Workshop"
+            ],
+            "valor": 50000,
+            "detalhes_valor": "Workshop: +50000 DNX",
+            "class_values": {
+                "Workshop": 50000
+            },
+            "hashes_classificacao": {
+                "Workshop": "c78bdd0b7b360356799b08d1fa71ad65467233351d03a1597ff171794263431e"
+            },
+            "status": "Pendente",
+            "integrantes": [
+                "Admin"
+            ],
+            "empresa": "Empresa Gênesis",
+            "cnpj": "00.000.000/0000-00",
+            "previous_hash": "0",
+            "hash": "0"
+        },
+        {
+            "index": 1,
+            "timestamp": "2025-08-07 19:12:35",
+            "classificacao": [
+                "Hora Extra",
+                "Workshop",
+                "Multa"
+            ],
+            "valor": 52990,
+            "detalhes_valor": "Hora Extra: +3000 DNX | Workshop: +50000 DNX (por empresa) | Multa: -10 DNX",
+            "class_values": {
+                "Hora Extra": 3000,
+                "Workshop": 50000,
+                "Multa": -10
+            },
+            "hashes_classificacao": {
+                "Hora Extra": "92d7519af19de93a89b9906d863091d45851a751fac82ccc1ec2f9dd29b2f18b",
+                "Workshop": "7f85e67f4213da3a4a41d551216d9ed03711acf46d5a9eef9822f3fabc8ff3fd",
+                "Multa": "7e7ffcdfd104eb65d948929976a5a1ad0fa23814cf9ffeddaf5a9844fdd1a12b"
+            },
+            "status": "Pendente",
+            "integrantes": [
+                "A",
+                "B",
+                "C"
+            ],
+            "empresa": "AAA",
+            "cnpj": "1",
+            "previous_hash": "0",
+            "hash": "7988ec182689f73a6b04a64c19d8a85d98103ee50b6089f40c834d8aaccc834a"
+        },
+        {
+            "index": 2,
+            "timestamp": "2025-08-07 19:13:17",
+            "classificacao": [
+                "Licitação"
+            ],
+            "valor": 100,
+            "detalhes_valor": "Licitação: +100 DNX",
+            "class_values": {
+                "Licitação": 100
+            },
+            "hashes_classificacao": {
+                "Licitação": "f82bc1d934573f1731df54a37cfea12b984055f5e5fae4482ef8d912236d44cd"
+            },
+            "status": "Pendente",
+            "integrantes": [
+                "A",
+                "B",
+                "C"
+            ],
+            "empresa": "AAA",
+            "cnpj": "1",
+            "previous_hash": "7988ec182689f73a6b04a64c19d8a85d98103ee50b6089f40c834d8aaccc834a",
+            "hash": "2bb6b43ebd46289359529fb6ed91b4dd7e469a07ca30549f72be00d97b0f7503"
+        }
+    ]
+}
