@@ -1,0 +1,233 @@
+{
+  "name": "AULA 07 - Agente Inteligente (Sentimentos)",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1WEmKgdC3RS_s4SRfjOewxqg3EE3t0iB2jUo5nCSCOLw",
+          "mode": "list",
+          "cachedResultName": "AULA 07 - Agente Inteligente (Sentimentos)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WEmKgdC3RS_s4SRfjOewxqg3EE3t0iB2jUo5nCSCOLw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sentimentos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1WEmKgdC3RS_s4SRfjOewxqg3EE3t0iB2jUo5nCSCOLw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Comentário ": "={{ $json.Comentario }}",
+            "Nome": "={{ $json.Nome }}",
+            "Classificação": "={{ $('Conector de LLM (Basic LLM Chain)').item.json.text }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Comentário ",
+              "displayName": "Comentário ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Classificação",
+              "displayName": "Classificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        768,
+        64
+      ],
+      "id": "79d35faf-b272-4745-98b3-c5396d6f1540",
+      "name": "Adicionando os dados na planilha",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "l1uiDgqiR6B1uJJi",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        560,
+        0
+      ],
+      "id": "22efe106-0ccb-4060-b57d-f01e54f9bbcb",
+      "name": "Combinação/Junção/Mesclar"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        224,
+        192
+      ],
+      "id": "1212075f-a8b2-4958-858e-94a5222d3ac2",
+      "name": "Modelo de linguagem (Groq Chat Model)",
+      "credentials": {
+        "groqApi": {
+          "id": "2WQutbK0he4FX4vB",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "Review do produto",
+        "formDescription": "O quanto você ficou satisfeito com o nosso produto?",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Nome",
+              "placeholder": "Digite seu nome completo.",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Comentario",
+              "fieldType": "textarea",
+              "placeholder": "Faça seu comentario.",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "132f2ba0-b3c8-4696-b336-9b7c2a9bbad1",
+      "name": "Formulário para adicionar os dados (On form submission)",
+      "webhookId": "a57c9725-af84-4e63-aefb-dc48ab8c0129"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.Comentario }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "You are an expert in sentimental analysis.\n\nYou conduct evaluation and determine which of the three options applies:\n\nPositive\nNegative\nNeutral\n\nYou respond with only one word."
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        256,
+        32
+      ],
+      "id": "54826477-8598-40f8-bc8b-b3d5add424e8",
+      "name": "Conector de LLM (Basic LLM Chain)"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Combinação/Junção/Mesclar": {
+      "main": [
+        [
+          {
+            "node": "Adicionando os dados na planilha",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Modelo de linguagem (Groq Chat Model)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Conector de LLM (Basic LLM Chain)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formulário para adicionar os dados (On form submission)": {
+      "main": [
+        [
+          {
+            "node": "Conector de LLM (Basic LLM Chain)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Combinação/Junção/Mesclar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conector de LLM (Basic LLM Chain)": {
+      "main": [
+        [
+          {
+            "node": "Combinação/Junção/Mesclar",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1402666b-0eda-4d2f-859b-28624b3460cd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d0b12614c70473cdc28cc673a85cba0ddc016047ef7191fbf87266bebc90897b"
+  },
+  "id": "fEnkSAUhV851KGkj",
+  "tags": []
+}
