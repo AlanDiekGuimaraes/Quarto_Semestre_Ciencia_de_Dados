@@ -15,7 +15,7 @@ import sys
 import os
 
 # Lista de bibliotecas a serem instaladas
-lista_de_bibliotecas = ["numpy", "pandas", "matplotlib", "seaborn", "nltk", "Spacy", "scikit-learn", "tensorflow", "keras", "xgboost", "lightgbm", "catboost"]
+lista_de_bibliotecas = ["numpy", "pandas", "matplotlib", "seaborn", "nltk", "Spacy", "scikit-learn", "tensorflow"]
 # Nome da pasta do ambiente virtual
 pasta_venv = ".venv"
 
