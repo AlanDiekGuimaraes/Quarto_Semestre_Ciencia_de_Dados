@@ -1,0 +1,15 @@
+Linguagens Livres de Contexto (Tipo 2)
+
+Desenvolva uma linguagem capaz de reproduzir a expressão:
+[X+X]*X
+
+S → SX | X | E
+X → [X+X] | *X
+
+
+S -> SX
+
+REGRA 1 = SXX
+REGRA 2 = S[X+X]X
+REGRA 2 = S[X+X]*X
+REGRA 1 = [X+X]*X
