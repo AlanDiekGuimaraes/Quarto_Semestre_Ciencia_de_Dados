@@ -1,4 +1,4 @@
-Linguagens Livres de Contexto (Tipo 2)
+Linguagens Livres de Contexto
 
 Desenvolva uma linguagem capaz de reproduzir a expressão:
 [X+X]*X
