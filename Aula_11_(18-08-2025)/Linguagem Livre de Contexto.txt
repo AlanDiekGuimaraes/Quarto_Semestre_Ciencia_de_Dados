@@ -13,3 +13,4 @@ REGRA 1 = SXX
 REGRA 2 = S[X+X]X
 REGRA 2 = S[X+X]*X
 REGRA 1 = [X+X]*X
+
