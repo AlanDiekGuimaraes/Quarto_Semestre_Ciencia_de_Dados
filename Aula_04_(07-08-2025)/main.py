@@ -5,6 +5,7 @@ from tkinter import messagebox, simpledialog
 from datetime import datetime
 import os
 
+
 VALORES = {
     "Hora Extra": 1000,
     "Licitação": 0,  # valor para Licitação será perguntado ao usuário
