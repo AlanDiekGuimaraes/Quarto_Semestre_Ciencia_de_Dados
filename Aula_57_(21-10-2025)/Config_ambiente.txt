@@ -1,0 +1,12 @@
+# Dependencias a serem adicionadas
+
+- azureml-inference-server-http
+      - tensorflow==2.19.0
+      - numpy
+      - pandas
+	  
+# Chamada de api em teste
+{"dados": [
+[1, 22, 0, 25, 14, 4, 27, 0, 1, 598, 9]
+]
+}
